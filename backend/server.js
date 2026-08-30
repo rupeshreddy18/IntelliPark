@@ -42,6 +42,11 @@ validateEnv();
 // Create Express app
 const app = express();
 
+// Trust the reverse proxy (Vercel/Render) so that:
+// 1. req.ip is correctly set to the client's IP (prevents rate limit issues)
+// 2. req.secure is correctly set to true if the client used HTTPS
+app.set("trust proxy", 1);
+
 // ========================================
 // SECURITY MIDDLEWARE
 // ========================================

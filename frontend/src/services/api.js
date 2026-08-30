@@ -13,10 +13,14 @@
  */
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "";
-
+// We intentionally omit VITE_API_URL here.
+// By setting baseURL to '/api', we force all requests to go through
+// the local reverse proxy (Vite in development, Vercel in production).
+// This ensures the browser treats requests as SAME-ORIGIN, preventing
+// strict 3rd-party cookie blocking policies (Safari, Brave, Incognito) 
+// from dropping the authentication token.
 const api = axios.create({
-  baseURL: `${API_URL}/api`,
+  baseURL: "/api",
   withCredentials: true, // Send cookies with every request
   headers: {
     "Content-Type": "application/json",
