@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://intellipark-h9gw.onrender.com/api/:path*"
-    }
-  ]
-}
